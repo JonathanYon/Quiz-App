@@ -147,60 +147,95 @@ var questions = [
   var nextButton=document.getElementById("next");
   var startButton=document.getElementById("start");
   let divv = document.getElementById("box")
+  let divv2 = document.getElementById("options")
     let h1 = document.querySelector("h1")
+    // console.log(h1)
   
   
   
   
   startButton.addEventListener("click", function(){
-    let start = document.querySelector("#start")
-    start.remove()
-    // h1.remove()
-    // nextQuestion()
+    
     h1.innerText = `QUESTION. ${questionIndex}`
     p.innerHTML = `${questions[current].question}`;
-  
-    // textInput()
+    let inputs = document.createElement("input")
+    let labels = document.createElement("label")
+    inputs.type = "radio"
+    inputs.name = "name"
+    inputs.id = `"${questions[current].correct_answer}"`
+    labels.htmlFor = `"${questions[current].correct_answer}"`
+    labels.innerText = `${questions[current].correct_answer}`
+    divv2.appendChild(inputs)
+    divv2.appendChild(labels)
+    console.log(labels.innerText)
+    // incorrect choises
+    for (let i=0; i<questions[current].incorrect_answers.length; i++){
+    let inc_Inputs = document.createElement("input")
+    let inc_Labels = document.createElement("label")
+    inc_Inputs.type = "radio"
+    inc_Inputs.name = "name"
+    inc_Inputs.id = `"${questions[current].incorrect_answers[i]}"`
+    inc_Labels.htmlFor = `"${questions[current].incorrect_answers[i]}"`
+    inc_Labels.innerText = `${questions[current].incorrect_answers[i]}`
+    divv2.appendChild(inc_Inputs)
+    divv2.appendChild(inc_Labels)
+
+    }
+    startButton.style.display = "none"
     nextButton.style.display = "block"
     prevButton.style.display = "none"
   })
   
-  // function textInput(){
-  //   let imput = document.createElement("input")
-  //   divv.appendChild(imput)
+ 
+  
+  // function nextQuestion(){         //next button-------------------------
+  
+  // divv.innerText = ""
+  // if(current<questions.length-1){
+  // current++;
+  // questionIndex=current+1;
+  //   h1.innerText = `QUESTION. ${questionIndex}`
+  // p.innerHTML = `${questions[current].question}`;
+
+
+  // let answer = document.createElement("li")
+  // answer.innerText = questions[current].correct_answer
+  // divv.appendChild(answer)
+
+  // for (let i = 0; i < questions[current].incorrect_answers.length; i++) {
+  //   let answer_c = document.createElement("li")
+  // answer_c.innerText = questions[current].incorrect_answers[i]
+  // divv.appendChild(answer_c)
+  // }
+
+  
+
+  // prevButton.style.display="block";
+  // }
+  
+  // if(current===questions.length-1){
+  // prevButton.style.display="block"
+  // nextButton.style.display = "none";
+  // }
+  
   // }
   
   
-  function nextQuestion(){         //next button-------------------------
-  
-  
-  if(current<questions.length-1){
-  current++;
-  questionIndex=current+1;
-    h1.innerText = `QUESTION. ${questionIndex}`
-  p.innerHTML = `${questions[current].question}`;
-  prevButton.style.display="block";
-  }
-  
-  if(current===questions.length-1){
-  prevButton.style.display="block"
-  nextButton.style.display = "none";
-  }
-  
-  }
-  
-  
-  function prevQuestion(){  //previouse question-------------------------------
-  if(current>0){
-  current--;
-  questionIndex=questionIndex-1;
-    h1.innerText = `QUESTION. ${questionIndex}`
-  p.innerHTML = `${questions[current].question}`;
-  nextButton.style.display="block";
-  }
-  
-  if(current===0){
-  prevButton.style.display="none"
-  nextButton.style.display = "block";
-  }
-  }
+  // function prevQuestion(){  //previouse question-------------------------------
+  //   if(current>0){
+  //     current--;
+  //     questionIndex=questionIndex-1;
+  //       h1.innerText = `QUESTION. ${questionIndex}`
+  //     p.innerHTML = `${questions[current].question}`;
+      
+  //     nextButton.style.display="block";
+  //     }
+      
+  //     if(current===0){
+  //     prevButton.style.display="none"
+  //     nextButton.style.display = "block";
+  //     }
+  //   }
+
+  //   nextQuestion()
+  //   prevQuestion()
