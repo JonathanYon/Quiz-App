@@ -185,15 +185,7 @@ var questions = [
 
   }
 
-  // prevButton.style.display="block";
-  // }
-  
-  // if(current===questions.length-1){
-  // prevButton.style.display="block"
-  // nextButton.style.display = "none";
-  // }
-  
-  // }
+ 
   
   
   function prevQuestion(){  //previouse question-------------------------------
@@ -204,7 +196,7 @@ var questions = [
       p.innerHTML = `${questions[current].question}`;
       choizes()
       nextButton.style.display="block";
-      prevButton.style.display="block"
+      prevButton.style.display="block";
 
       if(current<=1){
       prevButton.style.display="none"
@@ -215,16 +207,7 @@ var questions = [
     }
   }
 
-  //   nextQuestion()
-  //   prevQuestion()
-  // let answer = document.createElement("li")
-  // answer.innerText = questions[current].correct_answer
-  // divv.appendChild(answer)
-
-  // for (let i = 0; i < questions[current].incorrect_answers.length; i++) {
-  //   let answer_c = document.createElement("li")
-  // answer_c.innerText = questions[current].incorrect_answers[i]
-  // divv.appendChild(answer_c)
+ 
   
 function choizes(){
   let inputs = document.createElement("input")
