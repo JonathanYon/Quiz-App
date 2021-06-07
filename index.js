@@ -158,29 +158,7 @@ var questions = [
     
     h1.innerText = `QUESTION. ${questionIndex}`
     p.innerHTML = `${questions[current].question}`;
-    let inputs = document.createElement("input")
-    let labels = document.createElement("label")
-    inputs.type = "radio"
-    inputs.name = "name"
-    inputs.id = `"${questions[current].correct_answer}"`
-    labels.htmlFor = `"${questions[current].correct_answer}"`
-    labels.innerText = `${questions[current].correct_answer}`
-    divv2.appendChild(inputs)
-    divv2.appendChild(labels)
-    console.log(labels.innerText)
-    // incorrect choises
-    for (let i=0; i<questions[current].incorrect_answers.length; i++){
-    let inc_Inputs = document.createElement("input")
-    let inc_Labels = document.createElement("label")
-    inc_Inputs.type = "radio"
-    inc_Inputs.name = "name"
-    inc_Inputs.id = `"${questions[current].incorrect_answers[i]}"`
-    inc_Labels.htmlFor = `"${questions[current].incorrect_answers[i]}"`
-    inc_Labels.innerText = `${questions[current].incorrect_answers[i]}`
-    divv2.appendChild(inc_Inputs)
-    divv2.appendChild(inc_Labels)
-
-    }
+    choizes()
     startButton.style.display = "none"
     nextButton.style.display = "block"
     prevButton.style.display = "none"
@@ -188,27 +166,24 @@ var questions = [
   
  
   
-  // function nextQuestion(){         //next button-------------------------
+  function nextQuestion(){         //next button-------------------------
   
-  // divv.innerText = ""
-  // if(current<questions.length-1){
-  // current++;
-  // questionIndex=current+1;
-  //   h1.innerText = `QUESTION. ${questionIndex}`
-  // p.innerHTML = `${questions[current].question}`;
+  divv2.innerHTML = ""
+  if(current<questions.length){
+  current++;
+  questionIndex=current+1;
+    h1.innerText = `QUESTION. ${questionIndex}`
+  p.innerHTML = `${questions[current].question}`;
+  choizes()
+  startButton.style.display = "none"
+  if (current === questions.length-1)
+   nextButton.style.display = "none"
+   prevButton.style.display = "block"
 
 
-  // let answer = document.createElement("li")
-  // answer.innerText = questions[current].correct_answer
-  // divv.appendChild(answer)
+  }
 
-  // for (let i = 0; i < questions[current].incorrect_answers.length; i++) {
-  //   let answer_c = document.createElement("li")
-  // answer_c.innerText = questions[current].incorrect_answers[i]
-  // divv.appendChild(answer_c)
-  // }
-
-  
+  }
 
   // prevButton.style.display="block";
   // }
@@ -221,21 +196,58 @@ var questions = [
   // }
   
   
-  // function prevQuestion(){  //previouse question-------------------------------
-  //   if(current>0){
-  //     current--;
-  //     questionIndex=questionIndex-1;
-  //       h1.innerText = `QUESTION. ${questionIndex}`
-  //     p.innerHTML = `${questions[current].question}`;
+  function prevQuestion(){  //previouse question-------------------------------
+    if(current>0){
+      current--;
+      questionIndex=questionIndex-1;
+      h1.innerText = `QUESTION. ${questionIndex}`
+      p.innerHTML = `${questions[current].question}`;
+      choizes()
+      nextButton.style.display="block";
+      prevButton.style.display="block"
+
+      if(current<=1){
+      prevButton.style.display="none"
+      startButton.style.display="none"
       
-  //     nextButton.style.display="block";
-  //     }
       
-  //     if(current===0){
-  //     prevButton.style.display="none"
-  //     nextButton.style.display = "block";
-  //     }
-  //   }
+      } 
+    }
+  }
 
   //   nextQuestion()
   //   prevQuestion()
+  // let answer = document.createElement("li")
+  // answer.innerText = questions[current].correct_answer
+  // divv.appendChild(answer)
+
+  // for (let i = 0; i < questions[current].incorrect_answers.length; i++) {
+  //   let answer_c = document.createElement("li")
+  // answer_c.innerText = questions[current].incorrect_answers[i]
+  // divv.appendChild(answer_c)
+  
+function choizes(){
+  let inputs = document.createElement("input")
+  let labels = document.createElement("label")
+  inputs.type = "radio"
+  inputs.name = "name"
+  inputs.id = `"${questions[current].correct_answer}"`
+  labels.htmlFor = `"${questions[current].correct_answer}"`
+  labels.innerText = `${questions[current].correct_answer}`
+  divv2.appendChild(inputs)
+  divv2.appendChild(labels)
+  console.log(labels.innerText)
+  // incorrect choises
+  for (let i=0; i<questions[current].incorrect_answers.length; i++){
+  let inc_Inputs = document.createElement("input")
+  let inc_Labels = document.createElement("label")
+  inc_Inputs.type = "radio"
+  inc_Inputs.name = "name"
+  inc_Inputs.id = `"${questions[current].incorrect_answers[i]}"`
+  inc_Labels.htmlFor = `"${questions[current].incorrect_answers[i]}"`
+  inc_Labels.innerText = `${questions[current].incorrect_answers[i]}`
+  divv2.appendChild(inc_Inputs)
+  divv2.appendChild(inc_Labels)
+
+    }
+}
